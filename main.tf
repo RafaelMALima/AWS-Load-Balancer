@@ -143,7 +143,7 @@ resource "aws_db_instance" "database" {
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.id
   vpc_security_group_ids = [aws_security_group.db_sg.id]
   skip_final_snapshot    = var.settings.database.skip_final_snapshot
-  #multi_az = true
+  multi_az               = true
 }
 
 resource "aws_key_pair" "instance_keypair" {
@@ -169,7 +169,7 @@ resource "aws_autoscaling_group" "autoscale_group" {
   min_size            = 1
   max_size            = 5
   desired_capacity    = 2
-  vpc_zone_identifier = [aws_subnet.public_subnet[0].id]
+  vpc_zone_identifier = [aws_subnet.public_subnet[0].id, aws_subnet.public_subnet[1].id]
   launch_template {
     id      = aws_launch_template.django_template.id
     version = "$Latest"
@@ -257,11 +257,11 @@ resource "aws_cloudwatch_metric_alarm" "scale_down_alarm" {
 resource "aws_cloudwatch_metric_alarm" "scale_up_alarm" {
   alarm_description   = "Monitors CPU utilization for django instances"
   alarm_actions       = [aws_autoscaling_policy.scale_up.arn]
-  alarm_name          = "scale_down"
-  comparison_operator = "LessThanOrEqualToThreshold"
+  alarm_name          = "scale_up"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
   namespace           = "AWS/EC2"
   metric_name         = "CPUUtilization"
-  threshold           = "10"
+  threshold           = "60"
   evaluation_periods  = "2"
   period              = "10"
   statistic           = "Average"

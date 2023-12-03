@@ -43,6 +43,19 @@ terraform apply -var-file="../secrets.tfvars"
 Para ter toda a infraestrutura seguinte, foi criada uma VPC onde todos os componentes existem.
 ## Subnets
 Para garantir a privacidade da nossa base de dados, e acessibilidade ao load balancer, e consequentemente, nossas instâncias, foram criadas 2 redes públicas e duas redes privadas. Enquanto as redes públicas tem os blocos de CIDR <code>10.0.1.0/24</code> e <code>10.0.2.0/24</code>, as redes privadas ocupam os blocos CIDR<code>10.0.101.0/24</code> e <code>10.0.102.0/24</code>
+## Gateway
+Para o acesso dessas redes, foi criado um gateway. Esse gateway tem acesso à duas tabelas de roteamento. Enquanto a pública aceita acesso de computadores de fora da VPC (IE a sua máquina), a tabela da rede privada permite apenas que endereços da VPC se comuniquem com quem está dentro da rede privada.
+## Security group
+Para garantir que o acesso que ocorresse fosse apenas por SSH ou HTTP, foi criado um security group com permissão de ingresso nas portas 80 e 22.
+## Load Balancer
+Para que o acesso à nossa API fosse acessado dinâmicamente, foi criado um Load Balancer, para automáticamente distribuir a carga. Ele tem acesso às duas subnets públicas. O grupo alvo dele tem apenas acesso à porta 80 (onde está sendo hospedado o servidor nas nossas instâncias) com o protocolo HTTP.Usamos um target group para apontar para o nosso autoscaling group.
+## Autoscaling Group
+O autoscaling group cria de 1 a 5 instâncias nas duas redes públicas criadas (desired é de 2 redes públicas). As políticas tanto de scale up quanto de scale down são controladas por alarmes, que checam a utilização de CPU. As instâncias criadas usam UBUNTU como sistema operacional, e usama chave SSH criada anteriormente, caso seja necessário o acesso delas.
+## Aplicação 
+A aplicação é uma API com um CRUD básico, feita usando o framework em python FASTAPI. O repositório original pode ser encontrado no link  https://github.com/AndreCorreaSantos/simple_python_crud (Agradecimentos especiais ao Andre Correa Santos por liberar o uso da API nesse trabalho).
+A aplicação se conecta com o RDS server, fazendo todas as operações na instância da RDS, que é separada da instância da aplicação;
+## RDS
+Foi criada uma única instância da database. Essa instância está apenas nas subrede privada, para impedir que não sejam feitas requisições à ela de fora da nossa VPC. O programa usado para a base de dados é o MYSQL 8, acessível na porta 3306 da instância criada. 
 
 
 
