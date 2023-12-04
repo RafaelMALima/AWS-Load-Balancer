@@ -48,7 +48,7 @@ A região escolhida foi a us-east-1.
 
 A região us-east-1 da AWS é uma das regiões mais antigas e amplamente utilizadas. Ela é composta por seis zonas de disponibilidade e dez zonas locais . No entanto, essa região também é conhecida por ter experimentado várias falhas e interrupções no passado .
 
-De acordo com este artigo, https://openupthecloud.com/which-aws-region-cheapest/, a região é a mais barata disponível (considerando que faltam dados sobre a região de OHIO(us-east-2)). Com isso, tendo como objetivo principal a minimização de custos para a instituição que está pagando a hospedagem dos serviços, e já que o serviço não precisa de altíssima disponibilidade, já que ela não é uma preocupação muito relevante, dado que este é um projeto educacional.
+De acordo com este artigo, https://openupthecloud.com/which-aws-region-cheapest/, a região é a mais barata disponível (considerando que faltam dados sobre a região de OHIO(us-east-2)). Com isso, tendo como objetivo principal a minimização de custos para a instituição que está pagando a hospedagem dos serviços, e já que o serviço não precisa de altíssima disponibilidade, já que ela não é uma preocupação muito relevante, dado que este é um projeto educacional, foi escolhida a região da Virginia do Norte(us-east-1).
 ## VPC
 Para ter toda a infraestrutura seguinte, foi criada uma VPC onde todos os componentes existem.
 ## Subnets
