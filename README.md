@@ -34,10 +34,14 @@ db_password = "mypassword"
 my_ip = "0.0.0.0"
 </code>
 
+
 Com um arquivo assim, o comando apropriado é
 <code>
 terraform apply -var-file="../secrets.tfvars"
 </code>
+
+**Se der erro na criação do bucket, altere o nome**
+
 
 ## Região usada
 A região escolhida foi a us-east-1.
