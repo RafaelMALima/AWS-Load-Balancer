@@ -312,15 +312,6 @@ resource "aws_launch_template" "django_template" {
   }
 }
 
-resource "aws_eip" "web_eip" {
-  count    = var.settings.django_app.count
-  instance = aws_instance.django_instance[count.index].id
-  vpc      = true
-
-  tags = {
-    Name = "web_eip_${count.index}"
-  }
-}
 
 resource "aws_s3_bucket" "limaobucketunicoteste" {
   bucket = "limaobucketunicoteste"
