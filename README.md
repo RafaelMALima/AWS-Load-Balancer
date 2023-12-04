@@ -44,8 +44,7 @@ A região escolhida foi a us-east-1.
 
 A região us-east-1 da AWS é uma das regiões mais antigas e amplamente utilizadas. Ela é composta por seis zonas de disponibilidade e dez zonas locais . No entanto, essa região também é conhecida por ter experimentado várias falhas e interrupções no passado .
 
-Se você está localizado na costa leste dos Estados Unidos, a região us-east-1 pode ser uma boa escolha para minimizar a latência de rede. Além disso, se você estiver usando serviços que só estão disponíveis nessa região, como o Amazon RDS para Oracle, você precisará usar a região us-east-1 . No entanto, se você estiver preocupado com a resiliência e a disponibilidade, pode ser uma boa ideia considerar outras regiões da AWS que possam ser mais adequadas às suas necessidades.
-
+De acordo com este artigo, https://openupthecloud.com/which-aws-region-cheapest/, a região é a mais barata disponível (considerando que faltam dados sobre a região de OHIO(us-east-2)). Com isso, tendo como objetivo principal a minimização de custos para a instituição que está pagando a hospedagem dos serviços, e já que o serviço não precisa de altíssima disponibilidade, já que ela não é uma preocupação muito relevante, dado que este é um projeto educacional.
 ## VPC
 Para ter toda a infraestrutura seguinte, foi criada uma VPC onde todos os componentes existem.
 ## Subnets
