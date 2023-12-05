@@ -66,6 +66,8 @@ A aplicação se conecta com o RDS server, fazendo todas as operações na inst�
 Foi criada uma única instância da database. Essa instância está apenas nas subrede privada, para impedir que não sejam feitas requisições à ela de fora da nossa VPC. O programa usado para a base de dados é o MYSQL 8, acessível na porta 3306 da instância criada. 
 ## Cálculo de preço
 ![Cálculo de preços aws](./preco.png)
+## Diagrama
+![Cálculo de preços aws](./diagrama.pdf)
 
 
 
