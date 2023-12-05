@@ -15,24 +15,22 @@ export AWS_DEFAULT_REGION=us-east-1
 
 Então, crie uma chave ssh na sua pasta ~/.ssh com o nome instancekp. Caso queira usar outro nome para a chave, basta trocar o caminho do arquivo na linha 152 para o nome desejado.
 A chave pode ser criada com o seguinte comando:
-<code>
-ssh-keygen
+
+<code>ssh-keygen -f ~/.ssh/instancekp
 </code>
 
 Em seguida, após instalar o projeto na sua máquina e entrar nele, rode os seguintes comando:
 
-<code>
-terraform init
+<code>terraform init
 terraform apply
 </code>
 
 Com apenas esses comando, o programa pedirá para que você infome alguns parâmetrs pela linha de comando. Para evitar isso, crie um arquivo secrets.tfvars (recomendado que em um diretório separado *QUE NÃO SEJA UM REPOSITÓRIO GIT*, para evitar a possibilidade de vazamento das suas credênciais). Segue um exemplo desse arquivo
 
-<code>
-db_username = "myusername"
+<code>db_username = "myusername"
 db_password = "mypassword"
 my_ip = "0.0.0.0"
-</code>
+bucket_name = "superuniquebucketnamepranaodarpau"</code>
 
 
 Com um arquivo assim, o comando apropriado é
@@ -40,7 +38,7 @@ Com um arquivo assim, o comando apropriado é
 terraform apply -var-file="../secrets.tfvars"
 </code>
 
-**Se der erro na criação do bucket, altere o nome**
+**Se der erro na criação do bucket, altere o valor da variável, ele é extremamente sensível**
 
 
 ## Região usada
