@@ -314,7 +314,7 @@ resource "aws_launch_template" "django_template" {
 
 
 resource "aws_s3_bucket" "limaobucketunicoteste" {
-  bucket = "limaobucketunicoteste"
+  bucket = var.bucket_name
   acl    = "private"
   tags = {
     Name = "lemonbucket"
