@@ -67,7 +67,7 @@ Foi criada uma única instância da database. Essa instância está apenas nas s
 ## Cálculo de preço
 ![Cálculo de preços aws](./preco.png)
 ## Diagrama
-![Cálculo de preços aws](./diagrama.pdf)
+![Diagrama](./diagr.png)
 
 
 
