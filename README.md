@@ -1,4 +1,4 @@
-# Projeto-Cloud
+# Projeto - Load balancer usando a Amazon Web Services
 
 ## Rodando o projeto
 
